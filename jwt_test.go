@@ -120,3 +120,29 @@ func TestJWT(t *testing.T) {
 
 	// require.Equal(t, "test", jwt)
 }
+
+func TestVerifyJWT(t *testing.T) {
+	valueP := Payload{}
+	valueP.Iss = "login"
+	valueP.Aud = "www.domain.com"
+	valueP.Exp = 3600
+	valueP.Sub = "user@email.com"
+	valueP.Role = "admin"
+
+	alg := "HS256"
+
+	secret := "mysecret"
+
+	jwt, errjwt := JWT(alg, valueP, secret)
+
+	require.NoError(t, errjwt)
+	require.NotEmpty(t, jwt)
+
+	role, status, errver := VerifyJWT(jwt)
+
+	require.NoError(t, errver)
+	require.Equal(t, valueP.Role, role)
+	require.True(t, status)
+
+	// require.Equal(t, "test", jwt)
+}

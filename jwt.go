@@ -6,6 +6,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"errors"
+	"strings"
 	"time"
 )
 
@@ -112,4 +113,19 @@ func JWT(alg string, p Payload, secret string) (string, error) {
 
 	signV := encH + "." + encP + "." + sign
 	return signV, nil
+}
+
+func VerifyJWT(v string) (string, bool, error) {
+	splitString := strings.Split(v, ".")
+
+	decP, errD := decB64Payload(splitString[1])
+	if errD != nil {
+		return "", false, errD
+	}
+
+	if time.Unix(0, decP.Exp).Before(time.Now()) {
+		return "", false, errors.New("token expired")
+	}
+
+	return decP.Role, true, nil
 }
