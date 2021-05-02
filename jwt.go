@@ -118,6 +118,10 @@ func JWT(alg string, p Payload, secret string) (string, error) {
 func VerifyJWT(v string) (string, bool, error) {
 	splitString := strings.Split(v, ".")
 
+	if len(splitString) < 3 {
+		return "", false, errors.New("invalid token")
+	}
+
 	decP, errD := decB64Payload(splitString[1])
 	if errD != nil {
 		return "", false, errD

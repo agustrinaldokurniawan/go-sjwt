@@ -138,7 +138,7 @@ func TestVerifyJWT(t *testing.T) {
 	require.NoError(t, errjwt)
 	require.NotEmpty(t, jwt)
 
-	role, status, errver := VerifyJWT(jwt)
+	role, status, errver := VerifyJWT("jwt")
 
 	require.NoError(t, errver)
 	require.Equal(t, valueP.Role, role)
