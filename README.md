@@ -41,8 +41,8 @@ payload.Role = "admin" // set role
 ```
 
 ### Get Token
-```
-secret := "mysecret" > change with your [secret])
+```ruby
+secret := "mysecret" // change with your [secret]
 token, err := sjwt.JWT(alg, payload, secret)
 	if err != nil {
 		return err
