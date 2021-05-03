@@ -33,16 +33,16 @@ alg :=  "HS256"
 ### Set Payload
 ```
 payload := sjwt.Payload{}
-payload.Iss = "login" # set issuer
-payload.Aud = "www.domain.com" # set audience
-payload.Exp = 3600 # set expired in second
-payload.Sub = "user@email.com" # set subject
-payload.Role = "admin" # set role
+payload.Iss = "login" // set issuer
+payload.Aud = "www.domain.com" // set audience
+payload.Exp = 3600 // set expired in second
+payload.Sub = "user@email.com" // set subject
+payload.Role = "admin" // set role
 ```
 
 ### Get Token
 ```
-secret := "mysecret" # change with your secret
+secret := "mysecret" // change with your secret
 token, err := sjwt.JWT(alg, payload, secret)
 	if err != nil {
 		return err
