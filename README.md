@@ -71,3 +71,5 @@ role, status, errVerfify := sjwt.VerifyJWT("token")
 ## Contributing ♥️
 Pull request are welcome. I'm very happy if we can improve this code together 😊
 
+## License
+[MIT](https://github.com/agustrinaldokurniawan/go-sjwt/blob/main/LICENSE)
