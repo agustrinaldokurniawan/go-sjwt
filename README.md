@@ -31,7 +31,7 @@ alg :=  "HS256"
 ```
 
 ### Set Payload
-```
+```c
 payload := sjwt.Payload{}
 payload.Iss = "login" // set issuer
 payload.Aud = "www.domain.com" // set audience
@@ -41,8 +41,8 @@ payload.Role = "admin" // set role
 ```
 
 ### Get Token
-```cruby
-secret := "mysecret" // change with your [secret]
+```c
+secret := "mysecret" // change with your secret
 token, err := sjwt.JWT(alg, payload, secret)
 	if err != nil {
 		return err
